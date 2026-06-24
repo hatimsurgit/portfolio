@@ -1,0 +1,477 @@
+:root {
+    --bg-page: #FAF9F7; 
+    --text-main: #5C544E; 
+    --text-title: #2A2522;
+    --text-muted: #8A817C;
+    --card-bg: #FFFFFF;
+    
+    /* Couleurs pastel */
+    --pastel-pink: #FFD1DC;
+    --pastel-blue: #CDE4F7;
+    --pastel-yellow: #FDF0B2;
+    --pastel-green: #D4EDDA;
+    --pastel-beige: #EBE5DD;
+    
+    /* Fonds de semestres */
+    --bg-s1: #F4F8FC; /* Bleu très pâle */
+    --bg-s2: #FFFBF4; /* Jaune/Orange très pâle */
+    --bg-s3s4: #FAF4F8; /* Rose/Violet très pâle */
+
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.08);
+    --radius-box: 20px;
+    --font-main: 'Nunito', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: var(--bg-page); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; padding: 2rem; overflow-x: hidden; }
+
+/* LOGOS FLOTTANTS */
+.background-decoration { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.floating-logo { position: absolute; width: 50px; height: auto; opacity: 0.12; filter: grayscale(40%); animation: float 8s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(3deg); } }
+
+/* HEADER */
+.profile-hero { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 2rem auto 4rem auto; padding: 0 1rem; }
+.hero-left { display: flex; align-items: center; gap: 2rem; }
+.profile-pic-container { width: 200px; height: 200px; border-radius: 50%; padding: 5px; background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-pink)); box-shadow: var(--shadow-soft); }
+.profile-pic { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid #FFF; }
+.profile-name { font-size: 2.5rem; font-weight: 800; color: var(--text-title); letter-spacing: -0.5px; line-height: 1.2; }
+.profile-subtitle { font-size: 1.1rem; color: var(--text-muted); font-weight: 600; }
+.hero-right { display: flex; gap: 1rem; align-items: center; }
+.uni-logo { height: 60px; width: auto; object-fit: contain; filter: grayscale(20%); opacity: 0.9; }
+
+/* BENTO GRID */
+.bento-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.bento-card { background: var(--card-bg); border-radius: var(--radius-box); padding: 2rem; box-shadow: var(--shadow-soft); position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.02); }
+.card-accent { position: absolute; top: 0; left: 0; width: 100%; height: 6px; }
+.accent-blue { background-color: var(--pastel-blue); } .accent-beige { background-color: var(--pastel-beige); }
+.accent-yellow { background-color: var(--pastel-yellow); } .accent-pink { background-color: var(--pastel-pink); } .accent-green { background-color: var(--pastel-green); }
+
+.tag { display: inline-block; background: var(--bg-page); color: var(--text-muted); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; }
+h2 { color: var(--text-title); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 800; }
+h3 { color: var(--text-title); font-size: 1.2rem; }
+
+/* PLACEMENT GRILLE */
+.card-pourquoi { grid-column: span 5; }
+.card-objectifs { grid-column: span 7; }
+.card-competences-globales { grid-column: span 12; }
+.card-stage { grid-column: span 12; } /* Passé en pleine largeur (12) */
+.card-work-in-progress { grid-column: span 12; }
+.card-experiences { grid-column: span 12; } /* Passé en pleine largeur (12) */
+.card-sae-container { grid-column: span 12; padding: 2rem 0; }
+.card-sae-container > h2, .card-sae-container > .tag, .card-sae-container > .sae-instruction { padding: 0 2rem; }
+
+.docs-column { 
+    grid-column: span 3; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem; 
+}
+.docs-column .card-doc { 
+    flex: 1; /* Répartit la hauteur équitablement entre le CV et la Lettre */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
+.card-profil { 
+    grid-column: span 9; /* Prend les 2/3 restants de l'écran */
+}
+
+/* CONTENU BOITES */
+.cv-icon { font-size: 2.2rem; margin: 0.5rem 0 1rem 0; }
+.btn-download { background: var(--text-title); color: #FFF; text-decoration: none; padding: 0.5rem 1rem; border-radius: 12px; font-weight: 600; font-size: 0.85rem; }
+.objectif-list { list-style-type: none; padding-left: 0; }
+.objectif-list li { margin-bottom: 0.8rem; font-size: 0.95rem; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 1rem; }
+.skill-col h4 { font-size: 1.1rem; color: var(--text-title); margin-bottom: 0.5rem; border-bottom: 2px solid var(--bg-page); padding-bottom: 0.5rem; }
+.skill-col p { font-size: 0.9rem; line-height: 1.8; }
+
+/* Stage en pleine largeur */
+.stage-content { display: flex; gap: 2.5rem; align-items: flex-start; margin-top: 1.5rem; }
+.stage-image-placeholder { 
+    width: 200px; /* Plus grand car on a de la place */
+    height: 200px; 
+    background: var(--bg-page); 
+    border-radius: 16px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-shrink: 0; 
+    overflow: hidden;
+    padding: 20px; 
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+}
+.stage-image-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Petits ajustements typographiques pour que le texte du stage soit joli */
+.competences-stage ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+.competences-stage li {
+    margin-bottom: 0.4rem;
+}
+.competences-stage p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.experiences-grid { display: flex; flex-direction: column; gap: 1rem; }
+.exp-item { display: flex; gap: 1rem; align-items: center; }
+.exp-img-container { width: 70px; height: 70px; background: var(--bg-page); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.7rem; }
+/* --- SLIDER EXPÉRIENCES (PLEINE LARGEUR) --- */
+.carousel-wrapper {
+    position: relative;
+    margin-top: 1rem;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.experiences-slider { 
+    display: flex; 
+    overflow-x: auto; /* Permet le défilement */
+    scroll-snap-type: x mandatory; /* Verrouille le défilement pile sur l'image */
+    scroll-behavior: smooth; /* Glissement fluide */
+    width: 100%;
+    scrollbar-width: none; /* Cache la barre de défilement sur Firefox */
+}
+
+/* Cache la barre de défilement sur Chrome/Safari */
+.experiences-slider::-webkit-scrollbar { 
+    display: none; 
+}
+
+.exp-slide { 
+    position: relative; 
+    flex: 0 0 100%; /* Prend 100% de la largeur du parent ! */
+    min-height: 450px; /* Plus haut pour avoir une grande belle image */
+    scroll-snap-align: center;
+}
+
+.exp-bg-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.6s ease;
+}
+
+.exp-slide:hover .exp-bg-image {
+    transform: scale(1.03); /* Zoom très léger */
+}
+
+.exp-overlay {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    z-index: 2;
+    /* Dégradé plus sombre pour garantir la lisibilité du texte blanc */
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.4) 40%, transparent 100%);
+    padding: 3rem 5rem 2.5rem 3rem; /* Marges confortables */
+    color: #FFFFFF;
+}
+
+.exp-overlay h4 { 
+    font-size: 1.8rem; 
+    margin-bottom: 0.8rem; 
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.exp-overlay p { 
+    font-size: 1.05rem; 
+    line-height: 1.6;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    max-width: 900px; /* Évite que le texte soit trop large sur grand écran */
+}
+
+/* BOUTONS DU SLIDER (FLÈCHES) */
+.carousel-btn {
+    position: absolute;
+    top: 1.5rem; /* <-- On place les boutons en haut (à 1.5rem du bord supérieur) */
+    /* On supprime le transform: translateY(-50%) qui les centrait au milieu */
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.carousel-btn:hover { 
+    background: rgba(255, 255, 255, 0.4); 
+    transform: scale(1.1); /* <-- Mise à jour de l'animation de survol */
+}
+
+.prev-btn { left: 1.5rem; }
+.next-btn { right: 1.5rem; }
+
+/* INDICATEURS (PETITS POINTS) */
+.carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    z-index: 3;
+    display: flex;
+    gap: 0.5rem;
+}
+.dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.dot.active { 
+    background: #FFFFFF; 
+    transform: scale(1.3);
+}
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+    .exp-overlay { padding: 2rem 1.5rem 2.5rem 1.5rem; }
+    .exp-overlay h4 { font-size: 1.4rem; }
+    .exp-overlay p { font-size: 0.95rem; }
+    .carousel-btn { display: none; } /* On cache les boutons sur mobile, on utilise le doigt pour swiper */
+    .carousel-dots { right: 50%; transform: translateX(50%); } /* Centrer les points sur mobile */
+}
+
+
+.wip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+.wip-box { padding: 1.5rem; border-radius: 16px; }
+.red-box { background-color: #FFF5F5; border: 1px solid #FFE3E3; }
+.green-box { background-color: #F4FBF5; border: 1px solid #DDF3E4; }
+.wip-box h4 { margin-bottom: 0.5rem; color: var(--text-title); }
+
+/* DIFFÉRENCIATION DES SEMESTRES */
+.semester-wrapper { padding: 2rem; margin-bottom: 1rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.03); margin: 0 1rem 1.5rem 1rem; }
+.semester-1 { background-color: var(--bg-s1); }
+.semester-2 { background-color: var(--bg-s2); }
+.semester-3-4 { background-color: var(--bg-s3s4); }
+.semester-title { margin-bottom: 1.5rem; font-size: 1.3rem; color: var(--text-title); font-weight: 800; border-bottom: 2px dashed rgba(0,0,0,0.05); padding-bottom: 0.5rem; }
+
+/* GRILLE SAÉ */
+.sae-instruction { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; font-style: italic; }
+.sae-modern-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+.sae-item { background: var(--card-bg); border: 1px solid #F0ECE6; border-radius: 16px; padding: 1rem; text-align: left; cursor: pointer; position: relative; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow-soft); font-family: inherit; color: inherit; display: block; width: 100%; }
+.sae-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: #E2DDD6; }
+.sae-indicator { width: 12px; height: 12px; border-radius: 50%; position: absolute; top: 1rem; right: 1rem; }
+.bg-blue { background-color: #90CAF9; } .bg-pink { background-color: #F48FB1; } .bg-yellow { background-color: #FFE082; } .bg-green { background-color: #A5D6A7; } .bg-orange { background-color: #fcad53; } .bg-red { background-color: #ff8383; }
+.sae-img { width: 100%; aspect-ratio: 16/9; background: var(--bg-page); border-radius: 8px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--text-muted); }
+.sae-item h4 { font-size: 0.9rem; line-height: 1.3; margin-bottom: 0.5rem; font-weight: 700; }
+.sae-note { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); background: var(--bg-page); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 6px; }
+
+/* PONT S3-S4 */
+.s3-s4-bridge { display: flex; align-items: center; justify-content: space-between; background: var(--card-bg); padding: 1.5rem; border-radius: 20px; gap: 1rem; border: 1px solid rgba(0,0,0,0.03); }
+.sae-large { flex: 1; }
+.bridge-connector { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 120px; flex-shrink: 0; }
+.animated-line { width: 100%; height: 4px; background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-yellow)); border-radius: 4px; position: relative; overflow: hidden; }
+.animated-line::after { content: ''; position: absolute; top: 0; left: -50px; width: 50px; height: 100%; background: rgba(255,255,255,0.8); box-shadow: 0 0 10px rgba(255,255,255,0.8); animation: flow 2s infinite; }
+@keyframes flow { 100% { left: 100%; } }
+.bridge-text { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); margin-top: 0.5rem; text-transform: uppercase; text-align: center; }
+
+/* MODAL */
+/* --- MODAL (Élargie pour plus de lisibilité) --- */
+.detail-modal { 
+    margin: auto; 
+    border: none; 
+    border-radius: var(--radius-box); 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+    width: 95%; /* Prend 95% de la largeur de l'écran */
+    max-width: 1400px; /* Augmenté de 1000px à 1400px pour respirer */
+    padding: 0; 
+    background: var(--card-bg); 
+}
+.detail-modal::backdrop { background: rgba(42, 37, 34, 0.4); backdrop-filter: blur(4px); }
+.modal-content { padding: 2.5rem; position: relative; }
+.close-btn { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-muted); }
+#modal-title { margin-bottom: 1.5rem; font-size: 1.5rem; }
+
+/* --- TABLEAU (Répartition intelligente de l'espace) --- */
+.table-responsive { overflow-x: auto; margin-bottom: 2rem; }
+.sae-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    min-width: 1000px; /* Force le tableau à rester large (crée un scroll sur petit écran plutôt que d'écraser) */
+    table-layout: fixed; /* Force le respect des largeurs définies ci-dessous */
+}
+
+/* On force la largeur de chaque colonne pour optimiser la lecture */
+.sae-table th:nth-child(1) { width: 18%; } /* Objectif */
+.sae-table th:nth-child(2) { width: 32%; } /* Tâches (plus de texte, donc plus de place) */
+.sae-table th:nth-child(3) { width: 22%; } /* Compétences */
+.sae-table th:nth-child(4) { width: 12%; } /* Preuves (petit car juste des liens) */
+.sae-table th:nth-child(5) { width: 16%; } /* Améliorations */
+
+.sae-table th, .sae-table td { 
+    border: none; /* <-- On supprime la vilaine grille complète ! */
+    border-bottom: 1px solid rgba(0,0,0,0.04); /* Juste un trait horizontal ultra fin et discret pour séparer les lignes */
+    padding: 1.5rem 1.2rem; /* J'ai mis un peu plus d'espace en haut et en bas pour que ça respire */
+    text-align: left; 
+    vertical-align: top; 
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* On enlève le trait en bas de la toute dernière ligne pour que ce soit parfait */
+.sae-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* On donne un petit style au Header du tableau pour le démarquer sans bordure */
+.sae-table th { 
+    background: var(--bg-page); 
+    font-weight: 800; 
+    color: var(--text-title); 
+    text-transform: uppercase; /* Met les titres en majuscules */
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.modal-synthesis p { background: var(--bg-page); padding: 1.5rem; border-radius: 12px; line-height: 1.6; }
+
+/* --- LIENS PREUVES (Avec Logos) --- */
+.preuves-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* C'est ça qui crée l'espace parfait entre chaque lien ! */
+}
+
+.preuve-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem; /* Espace entre le logo et le texte */
+    text-decoration: none;
+    color: var(--text-title);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease, color 0.2s;
+}
+
+.preuve-item:hover {
+    color: #9b1b6a;
+    transform: translateX(4px); /* Petit effet glissant vers la droite au survol */
+}
+
+.preuve-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); /* Petite ombre sous les logos */
+}
+
+.preuve-emoji {
+    font-size: 1.3rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+}
+
+/* --- CORRECTION DES IMAGES SAÉ --- */
+.sae-img {
+    width: 100%;
+    height: 160px; /* Fixe une hauteur uniforme pour toutes tes images. Tu peux ajuster cette valeur ! */
+    overflow: hidden;
+    border-radius: 8px; /* Des petits bords arrondis pour s'intégrer au design Bento */
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.sae-img span {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sae-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La magie opère ici : recadre sans déformer */
+    object-position: center; /* Centre l'image dans la boîte */
+    display: block;
+    transition: transform 0.3s ease; /* Prépare une petite animation fluide */
+}
+
+/* Petit bonus : un effet de zoom stylé quand tu survoles le bouton de la SAÉ ! */
+/* Petit bonus : un effet de zoom stylé quand tu survoles le bouton de la SAÉ ! */
+.sae-item:hover .sae-img img {
+    transform: scale(1.05);
+} /* <--- C'est cette fameuse accolade qui manquait ! */
+
+/* ========================================= */
+/*               RESPONSIVE                  */
+/* ========================================= */
+@media (max-width: 1024px) {
+    /* On annule la grille complexe et on force tout à s'empiler en 1 seule colonne */
+    .bento-grid { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 1.5rem;
+    }
+    
+    /* Le Header s'empile et se centre */
+    .profile-hero { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 2rem; 
+        margin-top: 2rem; 
+    }
+    
+    .hero-left { 
+        flex-direction: column; 
+    }
+    
+    /* Le pont des SAÉ se met à la verticale */
+    .s3-s4-bridge { 
+        flex-direction: column; 
+    }
+    
+    .bridge-connector { 
+        transform: rotate(90deg); 
+        margin: 1.5rem 0; 
+    }
+    
+    .semester-wrapper { 
+        margin: 0 0 1.5rem 0; 
+        padding: 1.5rem;
+    }
+    
+    /* Le logo de l'entreprise passe au-dessus du texte pour le stage */
+    .stage-content { 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+    
+    /* Les grilles internes s'empilent aussi */
+    .skills-grid, .wip-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+
+    /* Le slider prend bien 100% de l'écran sur mobile */
+    .exp-slide { 
+        flex: 0 0 100%; 
+    }
+}
